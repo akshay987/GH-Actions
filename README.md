@@ -82,3 +82,22 @@ Perform integration tests for screen transition.
 ```
 $ ./mvnw clean verify -P tomcat90
 ```
+
+
+
+Architecture :
+================
+CI :
+------
+checkout
+add sonar scan
+maven build
+unit testing
+docker build
+push archives into artifactiory and docker images into registry
+CD :
+------
+write terraform for aks
+deploy aks
+deploy app in aks with CD and helm charts also
+route it via frontdoor 
