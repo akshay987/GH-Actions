@@ -1,12 +1,12 @@
 <%--
 
-       Copyright 2010-2016 the original author or authors.
+       Copyright 2010-2022 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
        You may obtain a copy of the License at
 
-          http://www.apache.org/licenses/LICENSE-2.0
+          https://www.apache.org/licenses/LICENSE-2.0
 
        Unless required by applicable law or agreed to in writing, software
        distributed under the License is distributed on an "AS IS" BASIS,
@@ -61,21 +61,21 @@
 				<td>${cartItem.inStock}</td>
 				<td><stripes:text size="3" name="${cartItem.item.itemId}"
 					value="${cartItem.quantity}" /></td>
-				<td><fmt:formatNumber value="${cartItem.item.listPrice}"
-					pattern="$#,##0.00" /></td>
-				<td><fmt:formatNumber value="${cartItem.total}"
-					pattern="$#,##0.00" /></td>
+				<td>$<fmt:formatNumber value="${cartItem.item.listPrice}"
+					pattern="#,##0.00" /></td>
+				<td>$<fmt:formatNumber value="${cartItem.total}"
+					pattern="#,##0.00" /></td>
 				<td><stripes:link class="Button"
 					beanclass="org.mybatis.jpetstore.web.actions.CartActionBean"
 					event="removeItemFromCart">
-					<stripes:param name="cartItem" value="${cartItem.item.itemId}" />
+					<stripes:param name="workingItemId" value="${cartItem.item.itemId}" />
             	Remove
             </stripes:link></td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="7">Sub Total: <fmt:formatNumber
-				value="${actionBean.cart.subTotal}" pattern="$#,##0.00" /> <stripes:submit
+			<td colspan="7">Sub Total: $<fmt:formatNumber
+				value="${actionBean.cart.subTotal}" pattern="#,##0.00" /> <stripes:submit
 				name="updateCartQuantities" value="Update Cart" /></td>
 			<td>&nbsp;</td>
 		</tr>
