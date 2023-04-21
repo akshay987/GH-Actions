@@ -19,5 +19,17 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: Build with Maven
+        run: maven --version 
         run: mvn clean package
+
+      - name: Run SonarQube Scan
+        run: |
+          export SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}
+          export SONAR_HOST_URL=${{ secrets.SONAR_HOST_URL }}
+          mvn clean install sonar:sonar \
+            -Dsonar.projectKey=my_project_key \
+            -Dsonar.organization=my_organization \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_TOKEN
