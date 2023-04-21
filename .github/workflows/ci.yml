@@ -19,11 +19,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
+      - name: maven version
+        run: mvn --version
+        
       - name: Build with Maven
-        run: |
-          mvn --version 
-          mvn clean package
+        run: mvn clean package
 
       - name: Run SonarQube Scan
         run: |
