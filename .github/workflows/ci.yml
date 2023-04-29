@@ -24,9 +24,6 @@ jobs:
         
       #- name: Build with Maven
       #  run: mvn clean package
-      - name: Build
-        run: mvn --batch-mode -DskipTests package
-
       - name: Test
         run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
@@ -48,3 +45,6 @@ jobs:
             -Dsonar.organization=my_organization \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN
+
+      - name: maven Build
+        run: mvn --batch-mode -DskipTests package
