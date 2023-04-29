@@ -1,12 +1,12 @@
 name: CI 
 
-on: 
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: 'provide version'
-        required: true
-        default: 'x.x.x.x'
+on: [push]
+  #workflow_dispatch:
+   # inputs:
+    #  releaseVersion:
+     #   description: 'provide version'
+        #required: true
+        #default: 'x.x.x.x' 
 
 jobs:
   build:
@@ -22,12 +22,23 @@ jobs:
       - name: maven version
         run: mvn --version
         
-      - name: Build with Maven
-        run: mvn clean package
+      #- name: Build with Maven
+      #  run: mvn clean package
+      - name: Build
+        run: mvn --batch-mode -DskipTests package
 
-      - name: Run unit tests
-        run: mvn test
-        
+      - name: Test
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+
+      - name: Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
+
       - name: Run SonarQube Scan
         run: |
           export SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}
