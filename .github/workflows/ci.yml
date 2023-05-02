@@ -47,4 +47,6 @@ jobs:
             -Dsonar.login=$SONAR_TOKEN
 
       - name: maven Build
-        run: mvn --batch-mode -DskipTests package
+        run: |
+         mvn clean package
+         ls target/
