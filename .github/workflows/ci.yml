@@ -52,4 +52,6 @@ jobs:
          ls target/
       
       - name: docker build
-        run: docker build . --file Dockerfile --tag my-ghaction-image:$(date +%s)
+        run: |
+          docker build . --file Dockerfile --tag my-ghaction-image:$(date +%s)
+          docker images
