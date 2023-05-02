@@ -40,7 +40,7 @@ jobs:
         run: |
           export SONAR_TOKEN=${{ secrets.SONAR_TOKEN }}
           export SONAR_HOST_URL=${{ secrets.SONAR_HOST_URL }}
-          mvn clean install sonar:sonar \
+          mvn install sonar:sonar \
             -Dsonar.projectKey=scan-jpetstore \
             -Dsonar.organization=my_organization \
             -Dsonar.host.url=$SONAR_HOST_URL \
