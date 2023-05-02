@@ -9,7 +9,7 @@ on: [push]
         #default: 'x.x.x.x' 
 
 jobs:
-  Test GH Action Pipeline:
+  Test-GH-Action-Pipeline:
     runs-on: ubuntu-latest
 
     steps:
