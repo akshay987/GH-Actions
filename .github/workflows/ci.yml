@@ -50,3 +50,6 @@ jobs:
         run: |
          mvn clean package
          ls target/
+      
+      - name: docker build
+        run: docker build . --file Dockerfile --tag my-ghaction-image:$(date +%s)
