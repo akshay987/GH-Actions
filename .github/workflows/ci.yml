@@ -60,4 +60,4 @@ jobs:
           dockerfile: Dockerfile
           push: true
           #tags: $DOCKER_USERNAME/jpetstore-war:v1
-          tags: akshay87/jpetstore-war:v1
+          tags: akshay87/jpetstore-war:v2
