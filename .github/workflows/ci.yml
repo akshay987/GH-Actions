@@ -7,6 +7,7 @@ on: [push]
      #   description: 'provide version'
         #required: true
         #default: 'x.x.x.x' 
+        #new Sonar URL http://4.227.238.37:9000/
 
 jobs:
   Test-GH-Action-Pipeline:
@@ -41,7 +42,7 @@ jobs:
             -Dsonar.organization=my_organization \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN
-
+          
       - name: maven Build
         run: |
          mvn clean package
